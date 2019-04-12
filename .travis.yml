@@ -1,0 +1,22 @@
+dist: trusty
+sudo: false
+
+language: go
+
+os:
+  - linux
+  - osx
+
+go:
+  - '1.12'
+
+env:
+  - GOMAXPROCS=4
+  - GO111MODULE=on
+  - GO15VENDOREXPERIMENT=1
+
+branches:
+  only:
+    - master
+
+script: make test test-race

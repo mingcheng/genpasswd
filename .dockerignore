@@ -1,0 +1,9 @@
+.git
+Dockerfile
+.DS_Store
+.gitignore
+README.md
+env.*
+/vendor/*
+.travis.yml
+go.sum
