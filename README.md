@@ -1,6 +1,8 @@
-# genpasswd - A simple password generator written in golang.
+# genpasswd
 
-This tool is based and inspired from https://github.com/sethvargo/go-password , thanks [Vargo](https://github.com/sethvargo).
+[![Build Status](https://travis-ci.com/mingcheng/genpasswd.go.svg?branch=master)](https://travis-ci.com/mingcheng/genpasswd.go)
+
+This is a simple password generator written in golang. This tool is based and inspired from https://github.com/sethvargo/go-password , thanks [Vargo](https://github.com/sethvargo).
 
 ## Some improvements
 
@@ -42,7 +44,6 @@ That's it, have fun!
 
 ## README.md from original `go-password` library.
 
-[![Build Status](https://travis-ci.org/sethvargo/go-password.svg?branch=master)](https://travis-ci.org/sethvargo/go-password)
 [![GoDoc](https://godoc.org/github.com/sethvargo/go-password?status.svg)](https://godoc.org/github.com/sethvargo/go-password)
 
 This library implements generation of random passwords with provided
