@@ -1,27 +1,46 @@
 # A Command Line Tool for Generate Passwords
 
-
 This tool is based and inspired by https://github.com/sethvargo/go-password , thanks [Vargo](https://github.com/sethvargo).
-
 
 ## Some improvements
 
 * A simple command interface for users
 * Clipboard support for Linux(Xorg/Wayland), macOS, Windows etc.
- 
+
 ## Build and Usage
 
+Just run `make build` to build genpasswd(require go version > 1.11). The `genpasswd` has many params, including:
+
 ```
---help
+  -allow-repeat
+    	Allows characters to repeat (default true)
+  -copies int
+    	Generate copies of password (default 1)
+  -digits int
+    	Number of digits to include in the password (default 4)
+  -length int
+    	Specify the password length (default 16)
+  -no-clipboard
+    	Do not copy to clipboard
+  -no-upper
+    	Excludes uppercase letters from the results (default true)
+  -symbols int
+    	Number of digits to include in the password (default 4)
+  -version
+    	Print version and exit
 ```
 
 ### Running in Docker
 
+Run `make docker_image` to build Docker image for gopasswd, if u wanna running this tool in contrainer.
 
+Then, type  `docker run --rm genpasswd:0.0.1` to run genpasswd after build is completed.
+
+That's it, have fun!
 
 --
 
-## README.md from original `go-password` library. 
+## README.md from original `go-password` library.
 
 [![Build Status](https://travis-ci.org/sethvargo/go-password.svg?branch=master)](https://travis-ci.org/sethvargo/go-password)
 [![GoDoc](https://godoc.org/github.com/sethvargo/go-password?status.svg)](https://godoc.org/github.com/sethvargo/go-password)
