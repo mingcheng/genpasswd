@@ -1,6 +1,6 @@
-# A Command Line Tool for Generate Passwords
+# genpasswd - A simple password generator written in golang.
 
-This tool is based and inspired by https://github.com/sethvargo/go-password , thanks [Vargo](https://github.com/sethvargo).
+This tool is based and inspired from https://github.com/sethvargo/go-password , thanks [Vargo](https://github.com/sethvargo).
 
 ## Some improvements
 
