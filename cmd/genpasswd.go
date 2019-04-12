@@ -59,5 +59,5 @@ func main() {
 	}
 
 	// print generated passwords at last
-	fmt.Print(result)
+	fmt.Println(result)
 }
