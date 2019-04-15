@@ -11,7 +11,10 @@ build: cmd/genpasswd.go
 	@$(GO) build $(GO_FLAGS) -o $(BIN) $<
 
 docker_image: clean
-	docker build -f ./Dockerfile -t genpasswd:$(VERSION) .
+	@docker build -f ./Dockerfile -t genpasswd:$(VERSION) .
+
+install: build
+	@cp $(BIN) /usr/local/bin
 
 test:
 	@$(GO) test .
