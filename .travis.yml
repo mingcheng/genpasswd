@@ -9,13 +9,13 @@ compiler:
   - clang
 
 go:
-  - 1.11.x
   - 1.12.x
 
 env:
-  - GOMAXPROCS=4
-  - GO111MODULE=on
-  - GO15VENDOREXPERIMENT=1
+  global:
+    - GOMAXPROCS=4
+    - GO111MODULE=on
+    - GO15VENDOREXPERIMENT=1
 
 gobuild_args: -x -ldflags "-extldflags -static"
 sudo: false
@@ -27,11 +27,16 @@ branches:
   only:
     - master
 
-notifications:
-  email: false
+# notifications:
+#   email: false
+
+before_script:
+  - make test test-race
 
 script:
-    - go mod vendor
-    - make test test-race
-    - make build
-    - ./genpasswd
+  - make build
+  - ./genpasswd -version
+  - ./genpasswd
+
+after_script:
+  - make clean
