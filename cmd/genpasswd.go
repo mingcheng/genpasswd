@@ -12,7 +12,12 @@ import (
 	"github.com/mingcheng/genpasswd.go"
 )
 
-var passwords []string
+const banner = `
+(~| _._ |) _  _ _     _|
+ _|}_| || (_|_\_\\/\/(_|
+
+Simple password generator, version %s, build %s
+`
 
 var (
 	length       = flag.Int("length", 16, "Specify the password length")
@@ -28,12 +33,19 @@ var (
 )
 
 func main() {
+	var passwords []string
+
+	flag.Usage = func() {
+		_, _ = fmt.Fprintf(os.Stderr, fmt.Sprintf(banner, version, buildTime))
+		flag.PrintDefaults()
+	}
+
 	// parse command line
 	flag.Parse()
 
 	// print version and exit
 	if *printVersion {
-		fmt.Printf("Version %s, build %s\n", version, buildTime)
+		_, _ = fmt.Fprintf(os.Stderr, fmt.Sprintf(banner, version, buildTime))
 		os.Exit(0)
 	}
 
