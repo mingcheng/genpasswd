@@ -9,7 +9,7 @@ import (
 	"strings"
 
 	"github.com/atotto/clipboard"
-	genpasswd "github.com/mingcheng/genpasswd/pkg"
+	genpasswd "github.com/mingcheng/genpasswd.go"
 )
 
 const banner = `

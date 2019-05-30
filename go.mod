@@ -1,4 +1,4 @@
-module github.com/mingcheng/genpasswd
+module github.com/mingcheng/genpasswd.go
 
 go 1.12
 
