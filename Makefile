@@ -7,14 +7,14 @@ GO_ENV=CGO_ENABLED=1
 GO_FLAGS=-ldflags="-X main.version=$(VERSION) -X 'main.buildTime=`date`' -extldflags -static"
 GO=env $(GO_ENV) go
 
-build: cmd/genpasswd.go
+build: main.go
 	@$(GO) build $(GO_FLAGS) -o $(BIN) $<
 
 docker_image: clean
 	@docker build -f ./Dockerfile -t genpasswd:$(VERSION) .
 
 install: build
-	@cp $(BIN) /usr/local/bin
+	@$(GO) install .
 
 test:
 	@$(GO) test .

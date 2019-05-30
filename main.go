@@ -9,12 +9,17 @@ import (
 	"strings"
 
 	"github.com/atotto/clipboard"
-	"github.com/mingcheng/genpasswd.go"
+	genpasswd "github.com/mingcheng/genpasswd/pkg"
 )
 
 const banner = `
-(~| _._ |) _  _ _     _|
- _|}_| || (_|_\_\\/\/(_|
+                                           o
+                                           |
+o--o o-o o-o  o-o   oo o-o o-o o   o   o o-O
+|  | |-' |  | |  | | |  \   \   \ / \ / |  |
+o--O o-o o  o O-o  o-o-o-o o-o   o   o   o-o
+   |          |
+o--o          o
 
 Simple password generator, version %s, build %s
 `
