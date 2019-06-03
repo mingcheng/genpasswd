@@ -1,12 +1,17 @@
 .PHONY: build clean test test-race
 
+ifneq ("$(wildcard /go)","")
+	GOPATH=/go
+	GOROOT=/usr/local/go
+endif
+
 VERSION=0.0.2
 BIN=genpasswd
 DIR_SRC=./cmd/genpasswd
 
 GO_ENV=CGO_ENABLED=1
 GO_FLAGS=-ldflags="-X main.version=$(VERSION) -X 'main.buildTime=`date`' -extldflags -static"
-GO=env $(GO_ENV) go
+GO=env $(GO_ENV) $(GOROOT)/bin/go
 
 build:$(DIR_SRC)/main.go
 	@$(GO) build $(GO_FLAGS) -o $(BIN) $(DIR_SRC)
