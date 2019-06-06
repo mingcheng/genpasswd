@@ -1,22 +1,42 @@
-dist: trusty
-sudo: false
-
 language: go
 
 os:
   - linux
   - osx
 
+compiler:
+  - gcc
+  - clang
+
 go:
-  - '1.12'
+  - 1.12.x
 
 env:
-  - GOMAXPROCS=4
-  - GO111MODULE=on
-  - GO15VENDOREXPERIMENT=1
+  global:
+    - GOMAXPROCS=4
+    - GO111MODULE=on
+    - GO15VENDOREXPERIMENT=1
+
+gobuild_args: -x -ldflags "-extldflags -static"
+sudo: false
+
+# before_script:
+#   - go get -v golang.org/x/lint/golint
 
 branches:
   only:
     - master
 
-script: make test test-race
+# notifications:
+#   email: false
+
+before_script:
+  - make test test-race
+
+script:
+  - make build
+  - ./genpasswd -version
+  - ./genpasswd
+
+after_script:
+  - make clean

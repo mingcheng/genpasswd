@@ -1,6 +1,6 @@
-# genpasswd
+# genpasswd.go
 
-[![Build Status](https://travis-ci.com/mingcheng/genpasswd.go.svg?branch=master)](https://travis-ci.com/mingcheng/genpasswd.go)
+[![Build Status](https://travis-ci.org/mingcheng/genpasswd.go.svg?branch=master)](https://travis-ci.org/mingcheng/genpasswd.go)
 
 This is a simple password generator written in golang. This tool is based and inspired from https://github.com/sethvargo/go-password , thanks [Vargo](https://github.com/sethvargo).
 
@@ -20,7 +20,7 @@ Just run `make build` to build genpasswd(require go version > 1.11). The `genpas
     	Generate copies of password (default 1)
   -digits int
     	Number of digits to include in the password (default 4)
-  -length int
+  -length intv
     	Specify the password length (default 16)
   -no-clipboard
     	Do not copy to clipboard

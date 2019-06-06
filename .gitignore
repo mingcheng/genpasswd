@@ -11,6 +11,7 @@ releases
 tmp
 .idea/
 vendor/
+/dist
 
 # Architecture specific extensions/prefixes
 trace.out
