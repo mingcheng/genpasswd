@@ -1,6 +1,6 @@
 .PHONY: build clean test test-race
 
-ifneq ("$(wildcard /go)","")
+ifneq ("$(wildcard /go)", "")
 	GOPATH=/go
 	GOROOT=/usr/local/go
 endif
@@ -25,6 +25,12 @@ install: build
 test:
 	@$(GO) test .
 
+dist: clean
+	@goreleaser  --skip-publish --rm-dist --snapshot
+
+release:
+	@goreleaser --rm-dist
+
 test-race:
 	@$(GO) test -race .
 
@@ -32,3 +38,4 @@ test-race:
 clean:
 	@$(GO) clean ./...
 	@rm -f $(BIN)
+	@rm -rf ./dist/*
