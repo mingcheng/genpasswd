@@ -1,6 +1,8 @@
+version: 2
 project_name: genpasswd
 before:
   hooks:
+    - go mod tidy
     - make clean
 builds:
   - main: ./cmd/genpasswd
@@ -13,18 +15,23 @@ builds:
       - linux
       - darwin
       - windows
+    goarch:
+      - amd64
+      - arm64
     ignore:
-      - goarch: 386
+      - goarch: "386"
 archives:
   - format: tar.gz
-    name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
-    replacements:
-      darwin: macOS
-      linux: Tux
-      freebsd: FreeBSD
-      windows: Windows
-      386: i386
-      amd64: x64
+    name_template: >-
+      {{ .ProjectName }}_{{ .Version }}_
+      {{- if eq .Os "darwin"}}macOS
+      {{- else if eq .Os "linux"}}Tux
+      {{- else if eq .Os "freebsd"}}FreeBSD
+      {{- else if eq .Os "windows"}}Windows
+      {{- else}}{{ .Os }}{{ end }}_
+      {{- if eq .Arch "amd64"}}x64
+      {{- else if eq .Arch "386"}}i386
+      {{- else}}{{ .Arch }}{{ end }}
     format_overrides:
       - goos: windows
         format: zip
