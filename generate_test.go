@@ -7,7 +7,8 @@ import (
 )
 
 const (
-	N = 10000
+	// testIterations is the number of times to run randomized test loops.
+	testIterations = 10000
 )
 
 func testHasDuplicates(tb testing.TB, s string) bool {
@@ -68,7 +69,7 @@ func TestGenerator_Generate(t *testing.T) {
 	t.Run("gen_lowercase", func(t *testing.T) {
 		t.Parallel()
 
-		for i := 0; i < N; i++ {
+		for i := 0; i < testIterations; i++ {
 			res, err := gen.Generate(i%len(LowerLetters), 0, 0, true, true)
 			if err != nil {
 				t.Error(err)
@@ -96,7 +97,7 @@ func TestGenerator_Generate(t *testing.T) {
 	t.Run("gen_no_repeats", func(t *testing.T) {
 		t.Parallel()
 
-		for i := 0; i < N; i++ {
+		for i := 0; i < testIterations; i++ {
 			res, err := gen.Generate(52, 10, 30, false, false)
 			if err != nil {
 				t.Error(err)
@@ -122,7 +123,7 @@ func TestGenerator_Generate_Custom(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	for i := 0; i < N; i++ {
+	for i := 0; i < testIterations; i++ {
 		res, err := gen.Generate(52, 10, 10, false, true)
 		if err != nil {
 			t.Error(err)

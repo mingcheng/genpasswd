@@ -5,7 +5,7 @@ ifneq ("$(wildcard /go)", "")
 	GOROOT=/usr/local/go
 endif
 
-VERSION=0.0.2
+VERSION=1.0.0
 BIN=genpasswd
 DIR_SRC=./cmd/genpasswd
 
