@@ -2,6 +2,7 @@ version: 2
 project_name: genpasswd
 before:
   hooks:
+    - go mod tidy
     - make clean
 builds:
   - main: ./cmd/genpasswd
@@ -14,8 +15,11 @@ builds:
       - linux
       - darwin
       - windows
+    goarch:
+      - amd64
+      - arm64
     ignore:
-      - goarch: 386
+      - goarch: "386"
 archives:
   - format: tar.gz
     name_template: >-
