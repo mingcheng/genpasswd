@@ -1,0 +1,38 @@
+#!#
+# Copyright (c) 2025-2026 S.EE Development Team
+#
+# This source code is licensed under the MIT License,
+# which is located in the LICENSE file in the source tree's root directory.
+#
+# File: go.yml
+# Author: S.EE Development Team <dev@s.ee>
+# File Created: 2025-12-23 11:20:54
+#
+# Modified By: S.EE Development Team <dev@s.ee>
+# Last Modified: 2026-01-19 19:38:45
+##
+
+# This workflow will build a golang project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-go
+
+name: Go Build Workflow
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Set up Go
+        uses: actions/setup-go@v6
+        with:
+          go-version: "1.26"
+
+      - name: Build
+        run: make build
