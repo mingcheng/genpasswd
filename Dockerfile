@@ -1,4 +1,4 @@
-FROM golang:1.9.7 AS builder
+FROM golang:1.14.4 AS builder
 LABEL maintainer="Ming Cheng"
 
 # Using 163 mirror for Debian Strech
@@ -9,11 +9,11 @@ ENV GOPATH /go
 ENV GOROOT /usr/local/go
 ENV PACKAGE github.com/mingcheng/genpasswd.go
 ENV BUILD_DIR ${GOPATH}/src/${PACKAGE}
+ENV GOPROXY https://mirrors.cloud.tencent.com/go,https://goproxy.cn,https://goproxy.io,direct
 
 # Print go version
-RUN echo "GOROOT is ${GOROOT}"
-RUN echo "GOPATH is ${GOPATH}"
-RUN ${GOROOT}/bin/go version
+RUN echo "GOROOT is ${GOROOT}, GOPATH is ${GOPATH}" && \
+	echo ${GOROOT}/bin/go version
 
 # Build
 COPY . ${BUILD_DIR}
@@ -24,7 +24,7 @@ RUN make clean && \
   mv ${BUILD_DIR}/genpasswd /usr/bin/genpasswd
 
 # Stage2
-FROM alpine:3.9.4
+FROM alpine:3.11.6
 
 # @from https://mirrors.ustc.edu.cn/help/alpine.html
 #RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories
