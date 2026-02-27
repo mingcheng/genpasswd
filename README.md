@@ -11,7 +11,7 @@ This is a simple password generator written in golang. This tool is based and in
 
 ## Build and Usage
 
-Just run `make build` to build genpasswd(require go version > 1.11). The `genpasswd` has many params, including:
+Just run `make build` to build genpasswd (requires go 1.26 or later). The `genpasswd` has many params, including:
 
 ```
   -allow-repeat
@@ -20,7 +20,7 @@ Just run `make build` to build genpasswd(require go version > 1.11). The `genpas
     	Generate copies of password (default 1)
   -digits int
     	Number of digits to include in the password (default 4)
-  -length intv
+  -length int
     	Specify the password length (default 16)
   -no-clipboard
     	Do not copy to clipboard
@@ -34,9 +34,9 @@ Just run `make build` to build genpasswd(require go version > 1.11). The `genpas
 
 ### Running in Docker
 
-Run `make docker_image` to build Docker image for gopasswd, if u wanna running this tool in contrainer.
+Run `make docker_image` to build Docker image for genpasswd, if you want to run this tool in a container.
 
-Then, type  `docker run --rm genpasswd:0.0.1` to run genpasswd after build is completed.
+Then, type  `docker run --rm genpasswd:0.0.2` to run genpasswd after build is completed.
 
 That's it, have fun!
 
